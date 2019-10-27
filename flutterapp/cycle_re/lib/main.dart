@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/widgets.dart';
 
 void main() => runApp(MyApp());
 
@@ -75,22 +76,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(),
       body: Column(
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              RaisedButton(
-                onPressed: _choose,
-                child: Text('Choose Image'),
+              FittedBox(
+                child: new Image.asset(
+                  'lib/assets/images/Home Page.png',
+                ),
+                fit: BoxFit.fill,
               ),
-              SizedBox(width: 10.0),
-              RaisedButton(
-                onPressed: _upload,
-                child: Text('Upload Image'),
-              )
+              //RaisedButton(
+                //onPressed: _choose,
+                //child: Text('Choose Image'),
+              //),
+              //SizedBox(width: 10.0),
+              //RaisedButton(
+                //onPressed: _upload,
+                //child: Text('Upload Image'),
+              //)
             ],
           ),
           file == null ? Text('No Image Selected') : Image.file(file)
